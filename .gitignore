@@ -1,0 +1,12 @@
+
+# Ignore macOS system files
+.DS_Store
+
+# Ignore environment files
+.env
+
+# Ignore build artifacts
+node_modules
+
+# Ignore custom sensitive rules
+.blackboxrules
