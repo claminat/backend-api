@@ -1,0 +1,58 @@
+<div class="kt-card-header flex-wrap gap-2">
+  <h3 class="kt-card-title text-sm">
+    <!-- Showing 10 of <%= totalItems %> items -->
+
+   Showing <%= items.length %> of <%= totalItems %> items
+
+
+  </h3>
+  <div class="flex flex-wrap gap-2 lg:gap-5">
+    <div class="flex">
+      <!-- <label class="kt-input">
+        <i class="ki-filled ki-magnifier">
+        </i>
+        <input placeholder="Search users" type="text" value="" />
+        
+
+      </label> -->
+      <form method="GET" action="/media/list" class="flex">
+        <label class="kt-input">
+          <i class="ki-filled ki-magnifier"></i>
+          <input type="text" name="search" value="<%= search || '' %>" placeholder="Search filename..."
+            class="border-none bg-transparent focus:outline-none" />
+        </label>
+        <!-- preserve các query params khác nếu cần -->
+        <input type="hidden" name="limit" value="<%= pagination.limit %>" />
+      </form>
+    </div>
+    <!-- <div class="flex flex-wrap gap-2.5">
+        <select class="kt-select w-36" data-kt-select="true" data-kt-select-placeholder="Select a status">
+          <option value="1">
+            Active
+          </option>
+          <option value="2">
+            Disabled
+          </option>
+          <option value="2">
+            Pending
+          </option>
+        </select>
+        <select class="kt-select w-36" data-kt-select="true" data-kt-select-placeholder="Select a sort">
+          <option value="1">
+            Latest
+          </option>
+          <option value="2">
+            Older
+          </option>
+          <option value="3">
+            Oldest
+          </option>
+        </select>
+        <button class="kt-btn kt-btn-outline kt-btn-primary">
+          <i class="ki-filled ki-setting-4">
+          </i>
+          Filters
+        </button>
+      </div> -->
+  </div>
+</div>

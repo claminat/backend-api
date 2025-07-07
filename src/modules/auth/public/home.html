@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Home Page</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/auth-public/login.css">
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h2>🏠 Home Page</h2>
+      <div id="authSection">
+        <!-- Sẽ được cập nhật bằng JS -->
+      </div>
+    </div>
+  </header>
+
+  <main style="padding: 40px; text-align: center;">
+    <h3>Chào mừng bạn đến với hệ thống của chúng tôi!</h3>
+    <p>Bạn có thể truy cập các tính năng ở đây...</p>
+  </main>
+
+  <script>
+    const authSection = document.getElementById('authSection');
+    const user = JSON.parse(localStorage.getItem('user'));
+
+    if (user) {
+      authSection.innerHTML = `
+        👋 Xin chào, <strong>${user.email}</strong>
+        <button onclick="logout()">Logout</button>
+      `;
+    } else {
+      authSection.innerHTML = `
+        <button onclick="window.location.href='/auth-public/login.html'">Login</button>
+      `;
+    }
+
+    function logout() {
+      localStorage.removeItem('user');
+      location.reload();
+    }
+  </script>
+  <script src="/auth-public/home.js"></script>
+
+</body>
+</html>

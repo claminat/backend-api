@@ -1,0 +1,53 @@
+<div
+  class="kt-card-footer justify-center md:justify-between flex-col md:flex-row gap-5 text-secondary-foreground text-sm font-medium">
+  <div class="flex items-center gap-2 order-2 md:order-1">
+    <form method="GET" id="pagingForm" class="flex items-center gap-2 order-2 md:order-1">
+      Show
+      <select class="kt-select w-16" name="limit" onchange="document.getElementById('pagingForm').submit()">
+        <% [5, 10, 20, 30, 50].forEach(val=> { %>
+          <option value="<%= val %>" <%=val===pagination.limit ? 'selected' : '' %>><%= val %>
+          </option>
+          <% }) %>
+      </select>
+      per page
+      <input type="hidden" name="page" value="<%= pagination.page %>" />
+    </form>
+  </div>
+
+  <div class="flex items-center gap-4 order-1 md:order-2">
+    <span data-kt-datatable-info="false"></span>
+    <%= (pagination.page - 1) * pagination.limit + 1 %>–<%= Math.min(pagination.page * pagination.limit,
+        pagination.total) %>
+        of <%= totalItems %>
+
+          <div class="kt-datatable-pagination" data-kt-datatable-pagination="false">
+            <div class="kt-datatable-pagination flex items-center gap-2">
+              <% const prevPage=pagination.page - 1; %>
+                <% const nextPage=pagination.page + 1; %>
+                  <% const totalPages=pagination.totalPages; %>
+
+                    <!-- Nút Previous -->
+                    <% if (pagination.page> 1) { %>
+                      <a href="/media/list?page=<%= prevPage %>&limit=<%= pagination.limit %>"
+                        class="kt-pagination-btn">&laquo;</a>
+                      <% } else { %>
+                        <span class="kt-pagination-btn disabled">&laquo;</span>
+                        <% } %>
+
+                          <!-- Số trang hiện tại -->
+                          <span class="kt-pagination-btn current">
+                            <%= pagination.page %>
+                          </span>
+
+                          <!-- Nút Next -->
+                          <% if (pagination.page < totalPages) { %>
+                            <a href="/media/list?page=<%= nextPage %>&limit=<%= pagination.limit %>"
+                              class="kt-pagination-btn">&raquo;</a>
+                            <% } else { %>
+                              <span class="kt-pagination-btn disabled">&raquo;</span>
+                              <% } %>
+            </div>
+
+          </div>
+  </div>
+</div>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login Success</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 100px;
+    }
+    .countdown {
+      font-size: 24px;
+      margin-top: 20px;
+    }
+  </style>
+  
+</head>
+<body>
+  <h1>🎉 Login Successful!</h1>
+  <p class="countdown">Redirecting to home in <span id="timer">3</span> seconds...</p>
+
+  <script>
+    let count = 3;
+    const timer = document.getElementById('timer');
+
+    const interval = setInterval(() => {
+      count--;
+      timer.textContent = count;
+      if (count === 0) {
+        clearInterval(interval);
+        window.location.href = '/auth-public/home.html';
+      }
+    }, 1000);
+  </script>
+  <script src="/auth-public/login-success.js"></script>
+
+</body>
+</html>

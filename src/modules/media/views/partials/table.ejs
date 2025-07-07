@@ -1,0 +1,59 @@
+<div class="kt-card kt-card-grid min-w-full">
+  <%- include('table.header.ejs', { totalItems }) %>
+
+  <div class="kt-card-content">
+    <div class="grid" data-kt-datatable="true" data-kt-datatable-page-size="10">
+      <div class="kt-scrollable-x-auto">
+        <table class="kt-table table-auto kt-table-border" data-kt-datatable-table="true">
+          <thead>
+            <tr>
+              <% columns .filter(col=> col.visible)
+                .sort((a, b) => a.order - b.order)
+                .forEach(col => { %>
+                <th class="min-w-[150px]">
+                  <span class="kt-table-col">
+                    <span class="kt-table-col-label">
+                      <%= col.label %>
+                    </span>
+                  </span>
+                </th>
+                <% }); %>
+            </tr>
+          </thead>
+          <!--begin::Table body-->
+          <tbody class="fw-semibold text-gray-600">
+            <% if (items && items.length> 0) { %>
+              <% items.forEach((item)=> { %>
+                <tr>
+                  <% columns .filter(col=> col.visible)
+                    .sort((a, b) => a.order - b.order)
+                    .forEach(col => { %>
+                    <td>
+                      <% if (col.format==='bytes' ) { %>
+                        <%= (item[col.key] / 1024).toFixed(1) %> KB
+                          <% } else if (col.format==='datetime' ) { %>
+                            <%= new Date(item[col.key]).toLocaleString() %>
+                              <% } else { %>
+                                <%= item[col.key] || '' %>
+                                  <% } %>
+                    </td>
+                    <% }); %>
+                </tr>
+                <% }); %>
+                  <% } else { %>
+                    <tr>
+                      <td colspan="<%= columns.filter(col => col.visible).length %>"
+                        class="text-center text-muted py-10">
+                        No item found.
+                      </td>
+                    </tr>
+                    <% } %>
+          </tbody>
+
+        </table>
+      </div>
+      <%- include('table.footer.ejs', { pagination, totalItems }) %>
+
+    </div>
+  </div>
+</div>

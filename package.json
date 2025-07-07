@@ -1,0 +1,51 @@
+{
+  "name": "media-manager-backend-api",
+  "version": "1.0.0",
+  "description": "Backend API cho Media Manager Tool",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.dev.js",
+    "test": "jest",
+    "test:watch": "jest --watch"
+  },
+  "keywords": [
+    "media",
+    "manager",
+    "api",
+    "nodejs"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+    "aws-sdk": "^2.1692.0",
+    "bcrypt": "^6.0.0",
+    "bcryptjs": "^2.4.3",
+    "chalk": "^4.1.2",
+    "compression": "^1.7.4",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "ejs": "^3.1.10",
+    "express": "^4.18.2",
+    "express-rate-limit": "^6.10.0",
+    "express-validation": "^4.1.1",
+    "express-validator": "^7.0.1",
+    "glob": "^11.0.3",
+    "helmet": "^7.0.0",
+    "joi": "^17.13.3",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^7.5.0",
+    "multer": "^1.4.5-lts.1",
+    "nodemailer": "^7.0.3"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "nodemon": "^3.0.1",
+    "rxjs": "^7.8.2",
+    "supertest": "^6.3.3",
+    "wait-on": "^6.0.1"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}
